@@ -27,18 +27,77 @@
         p { color: #666; }
         a { text-decoration: none; color: #007BFF; }
         a:hover { text-decoration: underline; }
+
+        .modal {
+            position: fixed;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -10px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: transform 0.4s ease;
+        }
+        .modal.active {
+            transform: translateY(-100%);
+        }
+        .modal h2 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+        }
+        .modal button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-    <audio autoplay loop controls>
+    <audio id="musica" loop>
         <source src="Musica.mp3" type="audio/mpeg">
         Tu navegador no soporta la reproducción de audio.
     </audio>
+
+    <div class="modal" id="modal">
+        <h2>¡Bienvenido!</h2>
+        <p>Haz clic en el botón para continuar.</p>
+        <button onclick="cerrarModal()">Aceptar</button>
+    </div>
+
     <div class="card">
-        <h1>Mi Nombre</h1>
+        <h1>Pongan bachata</h1>
         <p>Sobre mí: Hola Jyn.</p>
         <p>Contacto: <a href="mailto:furokivt@gmail.com">furokivt@gmail.com</a></p>
         <p>Redes sociales: <a href="https://twitter.com/micuenta" target="_blank">Twitter</a></p>
     </div>
+
+    <script>
+        
+        window.onload = function() {
+            const modal = document.getElementById('modal');
+            modal.classList.add('active');
+        }
+
+        function cerrarModal() {
+            const modal = document.getElementById('modal');
+            const audio = document.getElementById('musica');
+            
+            modal.classList.remove('active');
+            audio.play();
+        }
+    </script>
 </body>
 </html>
