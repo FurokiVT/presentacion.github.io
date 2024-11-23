@@ -1,140 +1,116 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pongan bachata</title>
-    <style>
-        /* Estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            background-image: url('fondo.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center; /* Centrado de la imagen */
-            color: #ffffff;
-            margin: 0;
-            overflow: hidden;
-            height: 100vh; /* Asegura que el body ocupe toda la pantalla */
-        }
-
-        .card {
-            max-width: 400px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        p {
-            color: #666;
-        }
-
-        a {
-            text-decoration: none;
-            color: #007BFF;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Estilos de la ventana modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 -10px 15px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            opacity: 1;
-            transition: opacity 0.4s ease;
-        }
-
-        .modal.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .modal img {
-            max-width: 80%;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .modal h2 {
-            margin: 0 0 10px 0;
-            font-size: 24px;
-        }
-
-        .modal button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .modal button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Estilos del video */
-        .video-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            z-index: 999;
-        }
-
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Estilos para móviles */
-        @media (max-width: 600px) {
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pongan bachata</title>
+        <style>
+            /* Estilos generales */
             body {
-                padding: 10px;
-                background-attachment: scroll; /* Desactivar 'fixed' en móviles */
-                background-size: 100% 100%; /* Hacer que la imagen de fondo cubra completamente */
+                font-family: Arial, sans-serif;
+                text-align: center;
+                padding: 20px;
+                background-image: url('fondo.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center; /* Centrado de la imagen */
+                color: #ffffff;
+                margin: 0;
+                overflow: hidden;
+                height: 100vh; /* Asegura que el body ocupe toda la pantalla */
             }
 
             .card {
-                max-width: 90%;
-                padding: 10px;
+                max-width: 400px;
+                margin: auto;
+                background: rgba(255, 255, 255, 0.9); /* Hacemos el fondo más opaco */
+                padding: 20px;
+                border-radius: 12px; /* Bordes más redondeados */
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra más profunda */
+                transition: all 0.3s ease; /* Transición suave */
             }
 
-            .modal img {
-                max-width: 70%;
+            .card:hover {
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* Sombra al pasar el ratón */
             }
 
-            .video-container {
-                top: 10px;
+            h1 {
+                color: #333;
+                font-size: 2.5em;
+            }
+
+            p {
+                color: #666;
+                font-size: 1.1em;
+            }
+
+            a {
+                text-decoration: none;
+                color: #007BFF;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            /* Estilos de la ventana modal */
+            .modal {
+                position: fixed;
+                top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                opacity: 1;
+                transition: opacity 0.4s ease;
+            }
+
+            .modal.hidden {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .modal img {
+                max-width: 80%;
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
+
+            .modal h2 {
+                margin: 0 0 10px 0;
+                font-size: 24px;
+            }
+
+            .modal button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007BFF;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .modal button:hover {
+                background-color: #0056b3;
+            }
+
+            /* Estilos del video */
+            .video-container {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                z-index: 999;
             }
 
             video {
@@ -143,77 +119,249 @@
                 object-fit: cover;
             }
 
-            h1 {
-                font-size: 1.5em;
+            /* Estilos para móviles */
+            @media (max-width: 600px) {
+                body {
+                    padding: 10px;
+                    background-attachment: scroll; /* Desactivar 'fixed' en móviles */
+                    background-size: 100% 100%; /* Hacer que la imagen de fondo cubra completamente */
+                }
+
+                .card {
+                    max-width: 90%;
+                    padding: 10px;
+                }
+
+                .modal img {
+                    max-width: 70%;
+                }
+
+                .video-container {
+                    top: 10px;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                h1 {
+                    font-size: 1.5em;
+                }
+
+                p {
+                    font-size: 1em;
+                }
+
+                .modal h2 {
+                    font-size: 20px;
+                }
+
+                .modal button {
+                    font-size: 14px;
+                }
             }
 
-            p {
-                font-size: 1em;
+            /* Estilos del menú emergente */
+            .social-menu {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.8);
+                border-radius: 8px;
+                padding: 20px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                z-index: 1100;
             }
 
-            .modal h2 {
+            .social-menu a {
+                display: flex;
+                align-items: center;
+                margin: 10px;
+                padding: 10px 20px;
+                background-color: #222; /* Fondo más oscuro para mejor contraste */
+                border-radius: 5px;
+                text-decoration: none;
+                color: #fff;
+                font-size: 18px;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+
+            .social-menu a:hover {
+                background-color: #444; /* Color más claro al pasar el ratón */
+                transform: scale(1.05);
+            }
+
+            .social-menu img {
+                width: 25px;
+                height: 25px;
+                margin-right: 10px;
+            }
+
+            .close-menu {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background-color: red;
+                color: white;
                 font-size: 20px;
+                padding: 5px 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
             }
 
-            .modal button {
-                font-size: 14px;
+            .close-menu:hover {
+                background-color: darkred;
             }
-        }
 
-    </style>
-</head>
-<body>
-    <audio id="musica" loop>
-        <source src="Musica.mp3" type="audio/mpeg">
-        Tu navegador no soporta la reproducción de audio.
-    </audio>
+            /* Botón de redes fuera del recuadro */
+            .social-button-container {
+                position: fixed;
+                top: 250px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 999;
+            }
 
-    <div class="modal" id="modal">
-        <img src="kuru-kuru.gif" alt="Bienvenida">
-        <h2>¡Bienvenido!</h2>
-        <p>Haz clic en el botón para continuar.</p>
-        <button onclick="cerrarModal()">Aceptar</button>
-    </div>
+            .social-button-container a {
+                display: inline-block;
+                background-color: #222;
+                padding: 10px 15px;
+                border-radius: 8px;
+                color: #fff;
+                font-size: 18px;
+                text-decoration: none;
+                transition: background-color 0.3s, transform 0.3s;
+            }
 
-    <div class="card">
-        <h1>Pongan bachata</h1>
-        <p>Sobre mí: Hola Jyn.</p>
-        <p>Contacto: <a href="mailto:furokivt@gmail.com">furokivt@gmail.com</a></p>
-        <p>Redes sociales: <a href="https://twitter.com/micuenta" target="_blank">Twitter</a></p>
-    </div>
+            .social-button-container a:hover {
+                background-color: #444;
+                transform: scale(1.1); /* Aumento al pasar el ratón */
+            }
 
-    <div class="video-container" id="videoContainer">
-        <video id="video" autoplay>
-            <source src="explosion-motocicleta.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de video.
-        </video>
-    </div>
+        </style>
+    </head>
+    <body>
+        <audio id="musica" loop>
+            <source src="Musica.mp3" type="audio/mpeg">
+            Tu navegador no soporta la reproducción de audio.
+        </audio>
 
-    <script>
-        window.onload = function() {
-            const modal = document.getElementById('modal');
-            const audio = document.getElementById('musica');
-            audio.loop = true;
-            audio.pause();  
-        }
+        <div class="modal" id="modal">
+            <img src="kuru-kuru.gif" alt="Bienvenida">
+            <h2>¡Bienvenido!</h2>
+            <p>Haz clic en el botón para continuar.</p>
+            <button onclick="cerrarModal()">Aceptar</button>
+        </div>
 
-        function cerrarModal() {
-            const modal = document.getElementById('modal');
-            const audio = document.getElementById('musica');
-            const videoContainer = document.getElementById('videoContainer');
-            const video = document.getElementById('video');
-            
-            modal.classList.add('hidden');  
-            audio.play();  
+        <div class="card">
+            <h1>Pongan bachata</h1>
+            <p>Sobre mí: Hola Jyn.</p>
+            <p>Contacto: <a href="mailto:furokivt@gmail.com">furokivt@gmail.com</a></p>
+        </div>
 
-            videoContainer.style.display = 'block';  
-            video.play();  
+        <!-- Botón de Redes Sociales fuera del recuadro -->
+        <div class="social-button-container">
+            <a href="javascript:void(0);" onclick="abrirMenu()">Ver Redes Sociales</a>
+        </div>
 
-            video.onended = function() {
-                videoContainer.style.display = 'none';  
-                audio.play(); 
-            };
-        }
-    </script>
-</body>
-</html>
+        <div class="video-container" id="videoContainer">
+            <video id="video" autoplay>
+                <source src="explosion-motocicleta.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+        </div>
+
+        <!-- Menú emergente de redes sociales -->
+        <!-- Menú emergente de redes sociales -->
+<div class="social-menu" id="socialMenu">
+    <button class="close-menu" onclick="cerrarMenu()">X</button>
+    <a href="https://www.youtube.com/@FurokiVT" target="_blank">
+        <img src="youtube-logo.png" alt="YouTube"> FurokiVT
+    </a>
+    <a href="https://www.twitch.tv/FurokiVT" target="_blank">
+        <img src="twitch-logo.png" alt="Twitch"> FurokiVT
+    </a>
+    <a href="https://twitter.com/FurokiVT" target="_blank">
+        <img src="twitter-logo.png" alt="Twitter"> @FurokiVT
+    </a>
+        <img src="discord-logo.png" alt="Discord"> @FurokiVT
+    </a>
+</div>
+
+<style>
+    /* Aumentar el tamaño del contenido dentro del menú de redes sociales */
+    .social-menu a {
+        font-size: 22px; /* Aumentamos el tamaño del texto */
+        padding: 15px 25px; /* Aumentamos el padding para darle más espacio */
+    }
+
+    .social-menu img {
+        width: 30px; /* Aumentamos el tamaño de las imágenes */
+        height: 30px;
+        margin-right: 15px; /* Ajustamos el margen */
+    }
+
+    .social-menu {
+        width: 350px; /* Aumentamos el tamaño del contenedor */
+        padding: 30px; /* Un poco más de padding para dar espacio */
+        font-size: 22px; /* Tamaño de fuente para todo el contenido */
+    }
+
+    .social-menu a:hover {
+        transform: scale(1.1); /* Aumentamos ligeramente el tamaño al hacer hover */
+    }
+
+    .social-menu button {
+        font-size: 20px; /* Aumentamos el tamaño del botón */
+    }
+</style>
+
+        </div>
+
+        <script>
+            window.onload = function() {
+                const modal = document.getElementById('modal');
+                const audio = document.getElementById('musica');
+                audio.loop = true;
+                audio.pause();
+            }
+
+            function cerrarModal() {
+                const modal = document.getElementById('modal');
+                const audio = document.getElementById('musica');
+                const videoContainer = document.getElementById('videoContainer');
+                const video = document.getElementById('video');
+                
+                modal.classList.add('hidden');
+                audio.play();
+                videoContainer.style.display = 'block';
+                video.play();
+
+                video.onended = function() {
+                    videoContainer.style.display = 'none';
+                    audio.play();
+                };
+            }
+
+            function abrirMenu() {
+                const socialMenu = document.getElementById('socialMenu');
+                socialMenu.style.display = 'flex';
+            }
+
+            function cerrarMenu() {
+                const socialMenu = document.getElementById('socialMenu');
+                socialMenu.style.display = 'none';
+            }
+        </script>
+    </body>
+    </html>
