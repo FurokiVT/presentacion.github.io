@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pongan bachata</title>
     <style>
+        /* Estilos generales */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -12,10 +13,11 @@
             background-image: url('fondo.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: top;
+            background-position: center center; /* Centrado de la imagen */
             color: #ffffff;
             margin: 0;
             overflow: hidden;
+            height: 100vh; /* Asegura que el body ocupe toda la pantalla */
         }
 
         .card {
@@ -44,6 +46,7 @@
             text-decoration: underline;
         }
 
+        /* Estilos de la ventana modal */
         .modal {
             position: fixed;
             top: 0;
@@ -92,6 +95,7 @@
             background-color: #0056b3;
         }
 
+        /* Estilos del video */
         .video-container {
             display: none;
             position: fixed;
@@ -109,9 +113,12 @@
             object-fit: cover;
         }
 
+        /* Estilos para móviles */
         @media (max-width: 600px) {
             body {
-                padding: 10px; 
+                padding: 10px;
+                background-attachment: scroll; /* Desactivar 'fixed' en móviles */
+                background-size: 100% 100%; /* Hacer que la imagen de fondo cubra completamente */
             }
 
             .card {
