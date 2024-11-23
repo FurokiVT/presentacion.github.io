@@ -16,7 +16,65 @@
             color: #ffffff;
             margin: 0;
             overflow: hidden;
+            
         }
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-image: url('fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    color: #ffffff;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px; 
+    }
+
+    .card {
+        max-width: 90%;
+        padding: 10px; 
+    }
+
+    .modal img {
+        max-width: 70%; 
+    }
+
+    .video-container {
+        top: 10px; 
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .modal h2 {
+        font-size: 20px;
+    }
+
+    .modal button {
+        font-size: 14px;
+    }
+}
         .card {
             max-width: 400px; 
             margin: auto; 
