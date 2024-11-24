@@ -49,38 +49,3 @@ socialLinks.forEach(link => {
         hoverSound.play();
     });
 });
-
-function abrirJuegosMenu() {
-    const gameMenu = document.getElementById('gameMenu');
-    gameMenu.style.display = 'block';
-}
-
-function cerrarJuegosMenu() {
-    const gameMenu = document.getElementById('gameMenu');
-    gameMenu.style.display = 'none';
-}
-
-function abrirJuego(juego) {
-    const gameContainer = document.getElementById('gameContainer');
-    gameContainer.innerHTML = ''; // Limpiar cualquier contenido previo
-
-    if (juego === 'pong') {
-        cargarPong();
-    } else if (juego === 'snake') {
-        cargarSnake();
-    }
-
-    cerrarJuegosMenu();
-}
-
-function cargarPong() {
-    const pongScript = document.createElement('script');
-    pongScript.src = 'js/pong.js';
-    document.getElementById('gameContainer').appendChild(pongScript);
-}
-
-function cargarSnake() {
-    const snakeScript = document.createElement('script');
-    snakeScript.src = 'js/snake.js';
-    document.getElementById('gameContainer').appendChild(snakeScript);
-}
