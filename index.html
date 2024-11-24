@@ -43,6 +43,7 @@
         
         <div class="social-button-container">
             <a href="javascript:void(0);" onclick="abrirMenu()">Ver Redes Sociales</a>
+            <a href="javascript:void(0);" onclick="abrirJuegosMenu()">Juegos</a>
         </div>
 
         <div class="video-container" id="videoContainer">
@@ -77,6 +78,14 @@
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" style="position: fixed; top: 10px; right: 10px; z-index: 900;">
             <img src="Imagenes/jayce.jpg" alt="Enlace" style="width: 50px; height: 50px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">
         </a>
+        <div class="game-menu" id="gameMenu">
+            <button class="close-menu" onclick="cerrarJuegosMenu()">X</button>
+            <button onclick="abrirJuego('pong')">Pong</button>
+            <button onclick="abrirJuego('snake')">Snake</button>
+        </div>
+    
+        <!-- Contenedor para los juegos -->
+        <div id="gameContainer"></div>
         <script src="js/scripts.js"></script>
     </body>
     </html>
