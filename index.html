@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" style="position: fixed; top: 10px; right: 10px; z-index: 900;">
+        <img src="Imagenes/jayce.jpg" alt="Enlace" style="width: 50px; height: 50px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">
+    </a>
     </head>
     <body>
         <audio id="musica" loop>
@@ -40,7 +43,13 @@
             <p>Contacto: <a href="mailto:furokivt@gmail.com">furokivt@gmail.com</a></p>
         </div>
 
-        
+        <div class="game-button-container">
+            <a href="javascript:void(0)" onclick="abrirMenuJuegos()">🏓 Pong</a>
+        </div>
+        <div class="snake-button-container">
+            <a href="javascript:void(0)" onclick="iniciarSnake()">🐍 Snake</a>
+        </div>
+        <canvas id="snakeCanvas" width="400" height="400" style="display: none; background: black;"></canvas>        
         <div class="social-button-container">
             <a href="javascript:void(0);" onclick="abrirMenu()">Ver Redes Sociales</a>
         </div>
@@ -70,13 +79,21 @@
         <img src="Imagenes/discord-logo.png" alt="Discord"> @FurokiVT
     </a>
 </div>
+<div class="game-menu" id="gameMenu">
+    <button class="close-menu" onclick="cerrarMenuJuegos()">X</button>
+    <div class="games">
+        <div class="game-container">
+            <h3>Pong</h3>
+            <canvas id="pongCanvas" width="600" height="400"></canvas>
+            <button onclick="iniciarPong('IA')">Jugar VS IA</button>
+            <button onclick="iniciarPong('2P')">Jugar 2 Jugadores</button>
+            <p>Controles: W/S para subir y bajar (Jugador 1), ↑/↓ (Jugador 2)</p>
+    </div>
+</div>
 
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" style="position: fixed; top: 10px; right: 10px; z-index: 900;">
-            <img src="Imagenes/jayce.jpg" alt="Enlace" style="width: 50px; height: 50px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">
-        </a>
         <script src="js/scripts.js"></script>
     </body>
     </html>
