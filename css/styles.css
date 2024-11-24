@@ -1,0 +1,266 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-image: url('fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: #ffffff;
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.card {
+    max-width: 400px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+    transition: all 0.3s ease; 
+}
+
+.card:hover {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); 
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+}
+
+p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos de la ventana modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal img {
+    max-width: 80%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.modal h2 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+}
+
+.modal button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos del video */
+.video-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 999;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        background-attachment: scroll; 
+        background-size: 100% 100%; 
+    }
+
+    .card {
+        max-width: 90%;
+        padding: 10px;
+    }
+
+    .modal img {
+        max-width: 70%;
+    }
+
+    .video-container {
+        top: 10px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .modal h2 {
+        font-size: 20px;
+    }
+
+    .modal button {
+        font-size: 14px;
+    }
+}
+
+/* Estilos del menú emergente */
+.social-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1100;
+}
+
+.social-menu a {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #222;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-menu a:hover {
+    background-color: #444; 
+    transform: scale(1.05);
+}
+
+.social-menu img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.close-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-menu:hover {
+    background-color: darkred;
+}
+
+/* Botón de redes fuera del recuadro */
+.social-button-container {
+    position: fixed;
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.social-button-container a {
+    display: inline-block;
+    background-color: #222;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-button-container a:hover {
+    background-color: #444;
+    transform: scale(1.1); 
+}
+    
+    .social-menu a {
+        font-size: 22px; 
+        padding: 15px 25px; 
+    }
+
+    .social-menu img {
+        width: 30px; 
+        height: 30px;
+        margin-right: 15px; 
+    }
+
+    .social-menu {
+        width: 350px;
+        padding: 30px;
+        font-size: 22px;
+    }
+
+    .social-menu a:hover {
+        transform: scale(1.1);
+    }
+
+    .social-menu button {
+        font-size: 20px;
+    }
