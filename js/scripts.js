@@ -1,3 +1,4 @@
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 window.onload = function() {
     const modal = document.getElementById('modal');
     const audio = document.getElementById('musica');
@@ -127,31 +128,53 @@ function iniciarPong(mode) {
 
     document.addEventListener('keydown', (e) => (keys[e.key] = true));
     document.addEventListener('keyup', (e) => (keys[e.key] = false));
+    if (isTouchDevice) {
+        const upButtonP1 = document.createElement('button');
+        const downButtonP1 = document.createElement('button');
+        const upButtonP2 = document.createElement('button');
+        const downButtonP2 = document.createElement('button');
+    
+        upButtonP1.textContent = '⬆️ P1';
+        downButtonP1.textContent = '⬇️ P1';
+        upButtonP2.textContent = '⬆️ P2';
+        downButtonP2.textContent = '⬇️ P2';
+    
+        upButtonP1.className = downButtonP1.className =
+            upButtonP2.className = downButtonP2.className = 'pong-button';
+    
+        upButtonP1.style.position = downButtonP1.style.position =
+            upButtonP2.style.position = downButtonP2.style.position = 'absolute';
+        upButtonP1.style.left = '10px';
+        upButtonP1.style.top = '80px';
+        downButtonP1.style.left = '10px';
+        downButtonP1.style.top = '160px';
+        upButtonP2.style.right = '10px';
+        upButtonP2.style.top = '80px';
+        downButtonP2.style.right = '10px';
+        downButtonP2.style.top = '160px'; 
+    
+        upButtonP1.style.zIndex = downButtonP1.style.zIndex =
+            upButtonP2.style.zIndex = downButtonP2.style.zIndex = '5000';
+    
+        document.body.append(upButtonP1, downButtonP1, upButtonP2, downButtonP2);
+    
+        upButtonP1.addEventListener('touchstart', () => (keys['w'] = true));
+        upButtonP1.addEventListener('touchend', () => (keys['w'] = false));
+        downButtonP1.addEventListener('touchstart', () => (keys['s'] = true));
+        downButtonP1.addEventListener('touchend', () => (keys['s'] = false));
+        upButtonP2.addEventListener('touchstart', () => (keys['ArrowUp'] = true));
+        upButtonP2.addEventListener('touchend', () => (keys['ArrowUp'] = false));
+        downButtonP2.addEventListener('touchstart', () => (keys['ArrowDown'] = true));
+        downButtonP2.addEventListener('touchend', () => (keys['ArrowDown'] = false));
+    }
+    
+    
 
     gameInterval = setInterval(() => {
         update();
         draw();
     }, 1000 / 60);
 }
-canvas.addEventListener("touchstart", function(e) {
-    e.preventDefault();
-    let touchY = e.touches[0].clientY;
-    if (touchY < player1.y) {
-        player1.y = touchY - player1.height / 2;
-    } else if (touchY > player1.y + player1.height) {
-        player1.y = touchY - player1.height / 2;
-    }
-});
-
-canvas.addEventListener("touchmove", function(e) {
-    e.preventDefault();
-    let touchY = e.touches[0].clientY;
-    if (touchY < player1.y) {
-        player1.y = touchY - player1.height / 2;
-    } else if (touchY > player1.y + player1.height) {
-        player1.y = touchY - player1.height / 2;
-    }
-});
 
 function iniciarSnake() {
     const canvas = document.getElementById('snakeCanvas');
@@ -234,35 +257,45 @@ function iniciarSnake() {
         ctx.font = '20px Arial';
         ctx.fillText(`Score: ${score}`, 10, canvas.height - 10);
     }
+    if (isTouchDevice) {
+        const upButton = document.createElement('button');
+        const downButton = document.createElement('button');
+        const leftButton = document.createElement('button');
+        const rightButton = document.createElement('button');
+    
+        upButton.textContent = '⬆️';
+        downButton.textContent = '⬇️';
+        leftButton.textContent = '⬅️';
+        rightButton.textContent = '➡️';
+    
+        upButton.style.position = downButton.style.position =
+            leftButton.style.position = rightButton.style.position = 'absolute';
+    
+        upButton.style.left = '50%';
+        upButton.style.bottom = '80px';
+        upButton.style.transform = 'translateX(-50%)';
+        downButton.style.left = '50%';
+        downButton.style.bottom = '20px';
+        downButton.style.transform = 'translateX(-50%)';
+        leftButton.style.left = '35%';
+        leftButton.style.bottom = '50px';
+        rightButton.style.left = '65%';
+        rightButton.style.bottom = '50px';
+    
+        upButton.style.zIndex = downButton.style.zIndex =
+            leftButton.style.zIndex = rightButton.style.zIndex = '2000';
+
+        document.body.append(upButton, downButton, leftButton, rightButton);
+    
+        upButton.addEventListener('touchstart', () => (direction = 'UP'));
+        downButton.addEventListener('touchstart', () => (direction = 'DOWN'));
+        leftButton.addEventListener('touchstart', () => (direction = 'LEFT'));
+        rightButton.addEventListener('touchstart', () => (direction = 'RIGHT'));
+    }
+    
+    
 
     const game = setInterval(draw, 100);
 }
-let touchStartX, touchStartY, direction;
-
-canvas.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    touchStartX = touch.clientX;
-    touchStartY = touch.clientY;
-});
-
-canvas.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    const diffX = touch.clientX - touchStartX;
-    const diffY = touch.clientY - touchStartY;
-
-    if (Math.abs(diffX) > Math.abs(diffY)) {
-        if (diffX > 0 && direction !== 'LEFT') {
-            direction = 'RIGHT';
-        } else if (diffX < 0 && direction !== 'RIGHT') {
-            direction = 'LEFT';
-        }
-    } else {
-        if (diffY > 0 && direction !== 'UP') {
-            direction = 'DOWN';
-        } else if (diffY < 0 && direction !== 'DOWN') {
-            direction = 'UP';
-        }
-    }
-});
+document.querySelectorAll('.pong-button').forEach((btn) => btn.remove());
+document.querySelectorAll('.snake-button').forEach((btn) => btn.remove());
